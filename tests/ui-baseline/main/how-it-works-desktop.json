@@ -1,0 +1,760 @@
+{
+  "title": "Quillstones — Self-Publishing for Authors",
+  "scrollHeight": 1375,
+  "elements": [
+    {
+      "selector": "h2",
+      "index": 0,
+      "text": "Clear steps, no mystery.",
+      "box": {
+        "x": 152,
+        "y": 172,
+        "w": 484,
+        "h": 128
+      },
+      "style": {
+        "font-family": "\"Playfair Display\", serif",
+        "font-size": "48px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 44.8px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "h2",
+      "index": 1,
+      "text": "Ready to publish?",
+      "box": {
+        "x": 955,
+        "y": 729,
+        "w": 307,
+        "h": 26
+      },
+      "style": {
+        "font-family": "\"Playfair Display\", serif",
+        "font-size": "24px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "26.4px",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "h4",
+      "index": 0,
+      "text": "Send it over",
+      "box": {
+        "x": 152,
+        "y": 406,
+        "w": 357,
+        "h": 28
+      },
+      "style": {
+        "font-family": "\"Playfair Display\", serif",
+        "font-size": "21.6px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 9.6px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "h4",
+      "index": 1,
+      "text": "We respond with a plan",
+      "box": {
+        "x": 541,
+        "y": 406,
+        "w": 357,
+        "h": 28
+      },
+      "style": {
+        "font-family": "\"Playfair Display\", serif",
+        "font-size": "21.6px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 9.6px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "h4",
+      "index": 2,
+      "text": "We do the work",
+      "box": {
+        "x": 931,
+        "y": 406,
+        "w": 357,
+        "h": 28
+      },
+      "style": {
+        "font-family": "\"Playfair Display\", serif",
+        "font-size": "21.6px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 9.6px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": ".eyebrow",
+      "index": 0,
+      "text": "How it works",
+      "box": {
+        "x": 152,
+        "y": 144,
+        "w": 1136,
+        "h": 14
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "11.52px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "3.456px",
+        "color": "rgb(166, 139, 82)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 14.4px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "uppercase",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": ".eyebrow",
+      "index": 1,
+      "text": "Free quote",
+      "box": {
+        "x": 955,
+        "y": 704,
+        "w": 307,
+        "h": 14
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "11.52px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "3.456px",
+        "color": "rgb(166, 139, 82)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 11.2px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "uppercase",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": ".pill",
+      "index": 0,
+      "text": "Get in touch",
+      "box": {
+        "x": 1275,
+        "y": 28,
+        "w": 133,
+        "h": 41
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "14.4px",
+        "font-weight": "500",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(28, 22, 12)",
+        "background-color": "rgb(203, 176, 120)",
+        "margin": "0px",
+        "padding": "11.2px 24px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "100px"
+      }
+    },
+    {
+      "selector": ".pill",
+      "index": 1,
+      "text": "Get in touch",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "14.4px",
+        "font-weight": "500",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(28, 22, 12)",
+        "background-color": "rgb(203, 176, 120)",
+        "margin": "0px",
+        "padding": "13.6px 28.8px",
+        "display": "inline",
+        "text-transform": "none",
+        "border-radius": "100px"
+      }
+    },
+    {
+      "selector": ".pill",
+      "index": 2,
+      "text": "Get my free quote",
+      "box": {
+        "x": 955,
+        "y": 1146,
+        "w": 174,
+        "h": 46
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "14.4px",
+        "font-weight": "500",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(28, 22, 12)",
+        "background-color": "rgb(203, 176, 120)",
+        "margin": "4.8px 0px 0px",
+        "padding": "13.6px 24px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "100px"
+      }
+    },
+    {
+      "selector": "button",
+      "index": 0,
+      "text": "",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0
+      },
+      "style": {
+        "font-family": "Arial",
+        "font-size": "13.3333px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(0, 0, 0)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "0px",
+        "display": "none",
+        "text-transform": "none",
+        "border-radius": "50%"
+      }
+    },
+    {
+      "selector": "button",
+      "index": 1,
+      "text": "Get my free quote",
+      "box": {
+        "x": 955,
+        "y": 1146,
+        "w": 174,
+        "h": 46
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "14.4px",
+        "font-weight": "500",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(28, 22, 12)",
+        "background-color": "rgb(203, 176, 120)",
+        "margin": "4.8px 0px 0px",
+        "padding": "13.6px 24px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "100px"
+      }
+    },
+    {
+      "selector": ".step",
+      "index": 0,
+      "text": "01Send it overShare your manuscript or your brand brief thro",
+      "box": {
+        "x": 152,
+        "y": 345,
+        "w": 357,
+        "h": 171
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "25.6px 0px 0px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": ".step",
+      "index": 1,
+      "text": "02We respond with a planWithin a week you get an honest read",
+      "box": {
+        "x": 541,
+        "y": 345,
+        "w": 357,
+        "h": 171
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "25.6px 0px 0px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": ".step",
+      "index": 2,
+      "text": "03We do the workIf we go ahead, you get one team and one sta",
+      "box": {
+        "x": 931,
+        "y": 345,
+        "w": 357,
+        "h": 171
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "25.6px 0px 0px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "form",
+      "index": 0,
+      "text": "Your nameEmail or WhatsAppI amChoose oneAn authorA publisher",
+      "box": {
+        "x": 955,
+        "y": 811,
+        "w": 307,
+        "h": 397
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "0px",
+        "display": "grid",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "input",
+      "index": 0,
+      "text": "",
+      "box": {
+        "x": 955,
+        "y": 833,
+        "w": 307,
+        "h": 47
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "15.2px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(255, 255, 255, 0.04)",
+        "margin": "0px",
+        "padding": "12.8px 14.4px",
+        "display": "inline-block",
+        "text-transform": "none",
+        "border-radius": "10px"
+      }
+    },
+    {
+      "selector": "input",
+      "index": 1,
+      "text": "",
+      "box": {
+        "x": 955,
+        "y": 914,
+        "w": 307,
+        "h": 47
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "15.2px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(255, 255, 255, 0.04)",
+        "margin": "0px",
+        "padding": "12.8px 14.4px",
+        "display": "inline-block",
+        "text-transform": "none",
+        "border-radius": "10px"
+      }
+    },
+    {
+      "selector": "input",
+      "index": 2,
+      "text": "",
+      "box": {
+        "x": -10000,
+        "y": 878,
+        "w": 31,
+        "h": 47
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "15.2px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(255, 255, 255, 0.04)",
+        "margin": "0px",
+        "padding": "12.8px 14.4px",
+        "display": "inline-block",
+        "text-transform": "none",
+        "border-radius": "10px"
+      }
+    },
+    {
+      "selector": "select",
+      "index": 0,
+      "text": "Choose oneAn authorA publisherAn educator",
+      "box": {
+        "x": 955,
+        "y": 996,
+        "w": 307,
+        "h": 49
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "15.2px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(255, 255, 255, 0.04)",
+        "margin": "0px",
+        "padding": "12.8px 14.4px",
+        "display": "inline-block",
+        "text-transform": "none",
+        "border-radius": "10px"
+      }
+    },
+    {
+      "selector": "select",
+      "index": 1,
+      "text": "Choose a serviceComplete publishing packageEditing & proofre",
+      "box": {
+        "x": 955,
+        "y": 1079,
+        "w": 307,
+        "h": 49
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "15.2px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(255, 255, 255, 0.04)",
+        "margin": "0px",
+        "padding": "12.8px 14.4px",
+        "display": "inline-block",
+        "text-transform": "none",
+        "border-radius": "10px"
+      }
+    },
+    {
+      "selector": "label",
+      "index": 0,
+      "text": "Your name",
+      "box": {
+        "x": 955,
+        "y": 811,
+        "w": 307,
+        "h": 15
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "12.48px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "0.9984px",
+        "color": "rgb(154, 145, 134)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 6.4px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "uppercase",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "label",
+      "index": 1,
+      "text": "Email or WhatsApp",
+      "box": {
+        "x": 955,
+        "y": 893,
+        "w": 307,
+        "h": 15
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "12.48px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "0.9984px",
+        "color": "rgb(154, 145, 134)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 6.4px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "uppercase",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "label",
+      "index": 2,
+      "text": "I am",
+      "box": {
+        "x": 955,
+        "y": 974,
+        "w": 307,
+        "h": 15
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "12.48px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "0.9984px",
+        "color": "rgb(154, 145, 134)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 6.4px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "uppercase",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "label",
+      "index": 3,
+      "text": "Service",
+      "box": {
+        "x": 955,
+        "y": 1058,
+        "w": 307,
+        "h": 15
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "12.48px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "0.9984px",
+        "color": "rgb(154, 145, 134)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 6.4px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "uppercase",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "label",
+      "index": 4,
+      "text": "Leave this field empty",
+      "box": {
+        "x": -10000,
+        "y": 811,
+        "w": 1,
+        "h": 60
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "12.48px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "0.9984px",
+        "color": "rgb(154, 145, 134)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 6.4px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "uppercase",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "nav#nav",
+      "index": 0,
+      "text": "HomeWhat we doOur workHow it worksContactCall +91 96268 9654",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 97
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "19.2px 32px",
+        "display": "flex",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "footer",
+      "index": 0,
+      "text": "Our mission is to help every author publish a book they’re p",
+      "box": {
+        "x": 0,
+        "y": 604,
+        "w": 1440,
+        "h": 771
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "72px 0px 48px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "main",
+      "index": 0,
+      "text": "How it works Clear steps, no mystery. 01Send it overShare yo",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 604
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    }
+  ]
+}

@@ -31,6 +31,9 @@ jobs:
       - run: npm run build
         env:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+          # canonical URLs, sitemap.xml and robots.txt. Set the VITE_SITE_URL
+          # repository variable if the site moves to another address.
+          VITE_SITE_URL: ${{ vars.VITE_SITE_URL || 'https://quillstones.com' }}
           # public build-time settings, set as repository variables (see .env.example)
           VITE_FORM_ENDPOINT: ${{ vars.VITE_FORM_ENDPOINT }}
           VITE_FORM_ACCESS_KEY: ${{ vars.VITE_FORM_ACCESS_KEY }}

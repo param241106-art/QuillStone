@@ -65,7 +65,7 @@ export function FeaturedReleases() {
             </h2>
           </div>
           <Link className="viewall" to="/our-work">
-            View all titles <span>→</span>
+            View all titles <span aria-hidden="true">→</span>
           </Link>
         </div>
 

@@ -6,6 +6,7 @@ interface ImportMetaEnv {
   readonly VITE_FORM_ACCESS_KEY?: string;
   readonly VITE_ANALYTICS_ID?: string;
   readonly VITE_ANALYTICS_SRC?: string;
+  readonly VITE_SITE_URL?: string;
 }
 
 interface ImportMeta {

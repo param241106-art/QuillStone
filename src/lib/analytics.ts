@@ -12,14 +12,16 @@
  * submissions (see sendEnquiry.ts).
  */
 
+import { routeOf } from '@/lib/assets';
+
 const ID = (import.meta.env.VITE_ANALYTICS_ID ?? '').trim();
 
 export type Provider = 'ga4' | 'plausible' | null;
 export const provider: Provider = !ID ? null : /^G-[A-Z0-9]+$/i.test(ID) ? 'ga4' : 'plausible';
 
-// The site uses a HashRouter, so Plausible needs its hash-aware script.
+// Plausible's standard script records the router's history.pushState navigations.
 const PLAUSIBLE_SRC =
-  (import.meta.env.VITE_ANALYTICS_SRC ?? '').trim() || 'https://plausible.io/js/script.hash.js';
+  (import.meta.env.VITE_ANALYTICS_SRC ?? '').trim() || 'https://plausible.io/js/script.js';
 
 type Props = Record<string, string>;
 
@@ -67,8 +69,8 @@ function addScript(src: string, attrs: Record<string, string> = {}) {
   document.head.appendChild(s);
 }
 
-/** The route inside the HashRouter, e.g. "/contact". */
-const currentRoute = () => location.hash.replace(/^#/, '').split('?')[0] || '/';
+/** The current route, e.g. "/contact". */
+const currentRoute = () => routeOf(location.pathname);
 
 function loadGa(sendPageview: boolean) {
   if (gaLoaded || provider !== 'ga4') return;
@@ -105,7 +107,7 @@ export function track(event: string, props: Props = {}) {
   else if (provider === 'plausible') window.plausible?.(event, { props });
 }
 
-/** GA4 only: Plausible's hash script records route changes itself. */
+/** GA4 only: Plausible's script records route changes itself. */
 export function trackPageview() {
   if (provider !== 'ga4' || !gaLoaded) return;
   window.gtag?.('event', 'page_view', {

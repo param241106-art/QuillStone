@@ -1,12 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { provider, readConsent, saveConsent, type Consent } from '@/lib/analytics';
 
 /**
  * Minimal consent banner, shown only when Google Analytics 4 is configured
  * (Plausible sets no cookies). GA4 doesn't load until the visitor accepts.
+ * The stored choice is read after mount: the prerendered HTML can't know it,
+ * and the first render in the browser has to match that HTML.
  */
 export function CookieNotice() {
-  const [open, setOpen] = useState(() => provider === 'ga4' && readConsent() === null);
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (provider === 'ga4' && readConsent() === null) setOpen(true);
+  }, []);
   if (!open) return null;
 
   const choose = (consent: Consent) => {

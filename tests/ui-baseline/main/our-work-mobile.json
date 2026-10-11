@@ -1,0 +1,656 @@
+{
+  "title": "Quillstones — Self-Publishing for Authors",
+  "scrollHeight": 2023,
+  "elements": [
+    {
+      "selector": "h2",
+      "index": 0,
+      "text": "The shelf is being stocked.",
+      "box": {
+        "x": 20,
+        "y": 171,
+        "w": 350,
+        "h": 70
+      },
+      "style": {
+        "font-family": "\"Playfair Display\", serif",
+        "font-size": "35.2px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "35.2px",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "h2",
+      "index": 1,
+      "text": "Ready to publish?",
+      "box": {
+        "x": 41,
+        "y": 1345,
+        "w": 308,
+        "h": 26
+      },
+      "style": {
+        "font-family": "\"Playfair Display\", serif",
+        "font-size": "24px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "26.4px",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": ".eyebrow",
+      "index": 0,
+      "text": "From the shelf",
+      "box": {
+        "x": 20,
+        "y": 144,
+        "w": 350,
+        "h": 14
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "11.52px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "3.6864px",
+        "color": "rgb(166, 139, 82)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 12.8px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "uppercase",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": ".eyebrow",
+      "index": 1,
+      "text": "Free quote",
+      "box": {
+        "x": 41,
+        "y": 1320,
+        "w": 308,
+        "h": 14
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "11.52px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "3.456px",
+        "color": "rgb(166, 139, 82)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 11.2px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "uppercase",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": ".pill",
+      "index": 0,
+      "text": "Get in touch",
+      "box": {
+        "x": 197,
+        "y": 26,
+        "w": 116,
+        "h": 37
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "13.6px",
+        "font-weight": "500",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(28, 22, 12)",
+        "background-color": "rgb(203, 176, 120)",
+        "margin": "0px",
+        "padding": "9.6px 17.6px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "100px"
+      }
+    },
+    {
+      "selector": ".pill",
+      "index": 1,
+      "text": "Get in touch",
+      "box": {
+        "x": 24,
+        "y": 435,
+        "w": 143,
+        "h": 46
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "14.4px",
+        "font-weight": "500",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(28, 22, 12)",
+        "background-color": "rgb(203, 176, 120)",
+        "margin": "0px",
+        "padding": "13.6px 28.8px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "100px"
+      }
+    },
+    {
+      "selector": ".pill",
+      "index": 2,
+      "text": "Submit your manuscript",
+      "box": {
+        "x": 20,
+        "y": 425,
+        "w": 214,
+        "h": 41
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "14.4px",
+        "font-weight": "500",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(28, 22, 12)",
+        "background-color": "rgb(203, 176, 120)",
+        "margin": "0px",
+        "padding": "11.2px 24px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "100px"
+      }
+    },
+    {
+      "selector": ".pill",
+      "index": 3,
+      "text": "Get a free quote",
+      "box": {
+        "x": 20,
+        "y": 483,
+        "w": 161,
+        "h": 41
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "14.4px",
+        "font-weight": "500",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "11.2px 24px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "100px"
+      }
+    },
+    {
+      "selector": ".pill",
+      "index": 4,
+      "text": "Get my free quote",
+      "box": {
+        "x": 41,
+        "y": 1762,
+        "w": 174,
+        "h": 46
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "14.4px",
+        "font-weight": "500",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(28, 22, 12)",
+        "background-color": "rgb(203, 176, 120)",
+        "margin": "4.8px 0px 0px",
+        "padding": "13.6px 24px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "100px"
+      }
+    },
+    {
+      "selector": "button",
+      "index": 0,
+      "text": "",
+      "box": {
+        "x": 326,
+        "y": 23,
+        "w": 44,
+        "h": 44
+      },
+      "style": {
+        "font-family": "Arial",
+        "font-size": "13.3333px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(0, 0, 0)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "50%"
+      }
+    },
+    {
+      "selector": "button",
+      "index": 1,
+      "text": "Get my free quote",
+      "box": {
+        "x": 41,
+        "y": 1762,
+        "w": 174,
+        "h": 46
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "14.4px",
+        "font-weight": "500",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(28, 22, 12)",
+        "background-color": "rgb(203, 176, 120)",
+        "margin": "4.8px 0px 0px",
+        "padding": "13.6px 24px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "100px"
+      }
+    },
+    {
+      "selector": "form",
+      "index": 0,
+      "text": "Your nameEmail or WhatsAppI amChoose oneAn authorA publisher",
+      "box": {
+        "x": 41,
+        "y": 1427,
+        "w": 308,
+        "h": 397
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "0px",
+        "display": "grid",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "input",
+      "index": 0,
+      "text": "",
+      "box": {
+        "x": 41,
+        "y": 1448,
+        "w": 308,
+        "h": 47
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "15.2px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(255, 255, 255, 0.04)",
+        "margin": "0px",
+        "padding": "12.8px 14.4px",
+        "display": "inline-block",
+        "text-transform": "none",
+        "border-radius": "10px"
+      }
+    },
+    {
+      "selector": "input",
+      "index": 1,
+      "text": "",
+      "box": {
+        "x": 41,
+        "y": 1530,
+        "w": 308,
+        "h": 47
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "15.2px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(255, 255, 255, 0.04)",
+        "margin": "0px",
+        "padding": "12.8px 14.4px",
+        "display": "inline-block",
+        "text-transform": "none",
+        "border-radius": "10px"
+      }
+    },
+    {
+      "selector": "input",
+      "index": 2,
+      "text": "",
+      "box": {
+        "x": -10000,
+        "y": 1493,
+        "w": 31,
+        "h": 47
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "15.2px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(255, 255, 255, 0.04)",
+        "margin": "0px",
+        "padding": "12.8px 14.4px",
+        "display": "inline-block",
+        "text-transform": "none",
+        "border-radius": "10px"
+      }
+    },
+    {
+      "selector": "select",
+      "index": 0,
+      "text": "Choose oneAn authorA publisherAn educator",
+      "box": {
+        "x": 41,
+        "y": 1612,
+        "w": 308,
+        "h": 49
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "15.2px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(255, 255, 255, 0.04)",
+        "margin": "0px",
+        "padding": "12.8px 14.4px",
+        "display": "inline-block",
+        "text-transform": "none",
+        "border-radius": "10px"
+      }
+    },
+    {
+      "selector": "select",
+      "index": 1,
+      "text": "Choose a serviceComplete publishing packageEditing & proofre",
+      "box": {
+        "x": 41,
+        "y": 1695,
+        "w": 308,
+        "h": 49
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "15.2px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(255, 255, 255, 0.04)",
+        "margin": "0px",
+        "padding": "12.8px 14.4px",
+        "display": "inline-block",
+        "text-transform": "none",
+        "border-radius": "10px"
+      }
+    },
+    {
+      "selector": "label",
+      "index": 0,
+      "text": "Your name",
+      "box": {
+        "x": 41,
+        "y": 1427,
+        "w": 308,
+        "h": 15
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "12.48px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "0.9984px",
+        "color": "rgb(154, 145, 134)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 6.4px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "uppercase",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "label",
+      "index": 1,
+      "text": "Email or WhatsApp",
+      "box": {
+        "x": 41,
+        "y": 1509,
+        "w": 308,
+        "h": 15
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "12.48px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "0.9984px",
+        "color": "rgb(154, 145, 134)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 6.4px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "uppercase",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "label",
+      "index": 2,
+      "text": "I am",
+      "box": {
+        "x": 41,
+        "y": 1590,
+        "w": 308,
+        "h": 15
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "12.48px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "0.9984px",
+        "color": "rgb(154, 145, 134)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 6.4px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "uppercase",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "label",
+      "index": 3,
+      "text": "Service",
+      "box": {
+        "x": 41,
+        "y": 1674,
+        "w": 308,
+        "h": 15
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "12.48px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "0.9984px",
+        "color": "rgb(154, 145, 134)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 6.4px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "uppercase",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "label",
+      "index": 4,
+      "text": "Leave this field empty",
+      "box": {
+        "x": -10000,
+        "y": 1427,
+        "w": 1,
+        "h": 60
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "12.48px",
+        "font-weight": "600",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "0.9984px",
+        "color": "rgb(154, 145, 134)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px 0px 6.4px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "uppercase",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "nav#nav",
+      "index": 0,
+      "text": "HomeWhat we doOur workHow it worksContactCall +91 96268 9654",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 91
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "16px 20px",
+        "display": "flex",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "footer",
+      "index": 0,
+      "text": "Our mission is to help every author publish a book they’re p",
+      "box": {
+        "x": 0,
+        "y": 612,
+        "w": 390,
+        "h": 1410
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "72px 0px 48px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    },
+    {
+      "selector": "main",
+      "index": 0,
+      "text": "From the shelfThe shelf is being stocked.Books we publish wi",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 612
+      },
+      "style": {
+        "font-family": "Inter, sans-serif",
+        "font-size": "16px",
+        "font-weight": "400",
+        "font-style": "normal",
+        "line-height": "normal",
+        "letter-spacing": "normal",
+        "color": "rgb(244, 239, 230)",
+        "background-color": "rgba(0, 0, 0, 0)",
+        "margin": "0px",
+        "padding": "0px",
+        "display": "block",
+        "text-transform": "none",
+        "border-radius": "0px"
+      }
+    }
+  ]
+}

@@ -38,11 +38,11 @@ function apiDevMiddleware(databaseUrl: string | undefined): Plugin {
 export default defineConfig(({ mode, command, isPreview }) => {
   const env = loadEnv(mode, process.cwd(), '');
   return {
-    // GitHub Pages serves this project from /QuillStone/, not the domain root.
-    // Set BASE_PATH=/ when building for a host that serves it from the root
-    // (Vercel, Cloudflare Pages, or a custom domain). `vite preview` serves
-    // the built files, so it needs the same base as the build.
-    base: command === 'build' || isPreview ? env.BASE_PATH || '/QuillStone/' : '/',
+    // The site is served from the root of its custom domain (quillstones.com).
+    // Set BASE_PATH=/QuillStone/ to build for the github.io project address
+    // instead; the Pages workflow sets it from the repository's Pages settings.
+    // `vite preview` serves the built files, so it needs the same base as the build.
+    base: command === 'build' || isPreview ? env.BASE_PATH || '/' : '/',
     plugins: [react(), apiDevMiddleware(env.DATABASE_URL)],
     resolve: {
       alias: {

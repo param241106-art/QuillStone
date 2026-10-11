@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { LOGO, BG_TOTAL_FRAMES, bgFrameSrc } from '@/lib/assets';
+import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { BASE, HERO_LOGO_WIDTH, LOGO, LOGO_AR, BG_TOTAL_FRAMES, bgFrameSrc } from '@/lib/assets';
 import { trackPageview } from '@/lib/analytics';
+import { applyHead } from '@/seo/meta';
 import { SITE, hasWhatsApp, whatsappHref } from '@/config/site';
 import { ContactLinks } from '@/components/ContactLinks';
 import { QuoteForm } from '@/components/QuoteForm';
@@ -25,7 +26,7 @@ const focusablesIn = (root: HTMLElement) =>
    TUNING — everything you'd want to change lives here
    ============================================================ */
 const CFG = {
-  heroWidth: 440,
+  heroWidth: HERO_LOGO_WIDTH,
   markWidth: 880,
   markOpacity: 0.075,
   markBlur: 1.1,
@@ -69,6 +70,9 @@ export function Layout() {
   const logoStateRef = useRef<LogoState>({ x: 0, y: 0, w: 0, pull: 0 });
   const anchorRefreshRef = useRef<() => void>(() => {});
   const [menuOpen, setMenuOpen] = useState(false);
+  // the travelling logo stays hidden until its effect has placed it once, so
+  // the prerendered page never shows it unpositioned in the top-left corner
+  const [logoPlaced, setLogoPlaced] = useState(false);
   const menuBtnRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLElement>(null);
@@ -454,10 +458,11 @@ export function Layout() {
     const rings = inner.querySelectorAll<HTMLElement>('.ring');
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // the lockup's height ÷ width; refined once the real image reports its size
-    let AR = 1;
+    // the lockup's height ÷ width; checked again once the real image reports its size
+    let AR = LOGO_AR;
     let base = CFG.heroWidth;
     let mx = 0, my = 0, tmx = 0, tmy = 0;
+    let placed = false;
     let raf = 0;
 
     function layout() {
@@ -534,6 +539,10 @@ export function Layout() {
       rings.forEach((el) => (el.style.opacity = fade.toFixed(3)));
 
       logoStateRef.current = { x: cx, y: cy, w, pull: 1 };
+      if (!placed) {
+        placed = true;
+        setLogoPlaced(true);
+      }
       raf = requestAnimationFrame(frame);
     }
 
@@ -578,13 +587,34 @@ export function Layout() {
     };
   }, [isHome]);
 
-  /* ---------- refresh the dust field's anchor points + settle scroll
-     position on every navigation ---------- */
+  /* ---------- refresh the dust field's anchor points, the page's <head>
+     tags and the scroll position on every navigation ---------- */
   useEffect(() => {
     anchorRefreshRef.current();
+    applyHead(location.pathname);
     if (!location.search.includes('scroll=')) window.scrollTo(0, 0);
     trackPageview();
   }, [location.pathname, location.search]);
+
+  /* ---------- plain <a href="/…"> links in the pages' raw HTML (hero,
+     What we do) navigate inside the app like <Link>s, so the background
+     effects above aren't torn down by a full page load. <Link> handles
+     its own clicks first and marks them defaultPrevented. ---------- */
+  const navigate = useNavigate();
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = (e.target as Element | null)?.closest('a');
+      if (!a || (a.target && a.target !== '_self') || a.hasAttribute('download')) return;
+      if (a.getAttribute('href')?.startsWith('#')) return;
+      const url = new URL(a.href, window.location.href);
+      if (url.origin !== window.location.origin || !`${url.pathname}/`.startsWith(BASE)) return;
+      e.preventDefault();
+      navigate('/' + `${url.pathname}/`.slice(BASE.length).replace(/\/$/, '') + url.search + url.hash);
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, [navigate]);
 
   /* ---------- mobile menu (below 900px) ---------- */
   const menuOpenRef = useRef(false);
@@ -660,7 +690,7 @@ export function Layout() {
       <canvas id="dust" aria-hidden="true"></canvas>
 
       {/* the logo lives here, above the page, and travels — home only */}
-      <div className={`stage${isHome ? ' active' : ''}`} aria-hidden="true">
+      <div className={`stage${isHome && logoPlaced ? ' active' : ''}`} aria-hidden="true">
         <div className="flier" id="flier">
           <div className="flier-in" id="flierIn">
             <div className="aura"></div>
@@ -673,7 +703,7 @@ export function Layout() {
       </div>
 
       <nav id="nav" aria-label="Main">
-        <Link className="brand" to="/">
+        <Link className="brand" to="/" aria-label="Quillstones home">
           <img className="nav-mono" src={LOGO} alt="Quillstones" />
         </Link>
         <div className="nav-links">

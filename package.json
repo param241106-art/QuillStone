@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "og-image": "node scripts/make-og-image.mjs",
+    "ui:capture": "node tests/ui-baseline/capture.mjs",
+    "ui:diff": "node tests/ui-baseline/diff.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.app.json && tsc --noEmit -p tsconfig.node.json"
@@ -27,6 +30,7 @@
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.11",
     "globals": "^15.9.0",
+    "playwright": "^1.64.0",
     "postcss": "^8.4.35",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",

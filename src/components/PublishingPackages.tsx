@@ -77,7 +77,7 @@ export function PublishingPackages() {
             intro={
               <>
                 Tell us a little and we’ll recommend a package, with a free quote. Ready to send
-                your manuscript? <Link to="/?scroll=submit">Submit it here →</Link>
+                your manuscript? <Link to="/?scroll=submit" aria-label="Submit it here">Submit it here →</Link>
               </>
             }
           />

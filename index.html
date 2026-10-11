@@ -2,20 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Links from before the move off the hash router (/#/what-we-do?scroll=x)
+      // go straight to the page's real address, before anything renders.
+      (function () {
+        var h = location.hash;
+        if (h.indexOf('#/') === 0) location.replace('%BASE_URL%' + h.slice(2));
+      })();
+    </script>
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Self-publish your book with Quillstones: editing, cover design, formatting, ISBNs and worldwide distribution on Amazon KDP, IngramSpark and Draft2Digital."
-    />
-    <title>Quillstones — Self-Publishing for Authors</title>
-    <meta property="og:title" content="Quillstones — Self-Publishing for Authors" />
-    <meta
-      property="og:description"
-      content="Your story, published. Your book, worldwide. Editing, cover design, ISBNs and global distribution."
-    />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <!-- title, description, canonical, Open Graph and JSON-LD: src/seo/meta.ts -->
+    <!--app-head-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

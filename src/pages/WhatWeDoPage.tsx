@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { BASE } from '@/lib/assets';
 import { useRevealAndCounters } from '@/lib/useRevealAndCounters';
 
 const BODY_HTML = `
@@ -15,13 +16,13 @@ const BODY_HTML = `
         <div class="tagline">The Word — Publishing</div>
         <h3>You have a manuscript.</h3>
         <p>We acquire, edit, design, and publish literary fiction, essays, and epistolary work — with the typographic care a sentence deserves, and honest guidance at every stage.</p>
-        <a class="go" href="#/contact">Submit a manuscript →</a>
+        <a class="go" href="${BASE}contact" aria-label="Submit a manuscript">Submit a manuscript →</a>
       </div>
       <div class="path mkt reveal" id="marketing">
         <div class="tagline">The Signal — Marketing</div>
         <h3>You're building a brand.</h3>
         <p>Positioning, identity, and voice — then content, channels, and analytics. Strategy before noise, narrative before reach. We start with what you actually need.</p>
-        <a class="go" href="#/contact">Request a proposal →</a>
+        <a class="go" href="${BASE}contact" aria-label="Request a proposal">Request a proposal →</a>
       </div>
     </div>
   </div>
