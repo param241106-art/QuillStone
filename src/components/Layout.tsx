@@ -811,7 +811,6 @@ export function Layout() {
                 Our mission is to help every author publish a book they’re proud of — and put it in
                 readers’ hands around the world.
               </p>
-              <p className="initiative">Quillstones is an initiative of Phyra International.</p>
               <a className="email" href={`mailto:${SITE.email}`}>
                 {SITE.email}
               </a>

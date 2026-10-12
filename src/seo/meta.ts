@@ -85,8 +85,6 @@ function organization() {
         contactType: 'customer service',
       },
     }),
-    // from the footer: "Quillstones is an initiative of Phyra International."
-    parentOrganization: { '@type': 'Organization', name: 'Phyra International' },
     ...(SITE.social.length > 0 && { sameAs: SITE.social.map((s) => s.url) }),
   };
 }
