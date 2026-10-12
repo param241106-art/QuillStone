@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { BASE, HERO_LOGO_WIDTH, LOGO, LOGO_AR, BG_TOTAL_FRAMES, bgFrameSrc } from '@/lib/assets';
 import { trackPageview } from '@/lib/analytics';
@@ -91,6 +91,8 @@ export function Layout() {
 
       const images: (HTMLImageElement | null)[] = new Array(BG_TOTAL_FRAMES + 1).fill(null);
       const loaded: boolean[] = new Array(BG_TOTAL_FRAMES + 1).fill(false);
+      // restarts the drawing loop below once it has gone idle
+      let wake = () => {};
       const loadFrame = (i: number) => {
         if (images[i]) return;
         const img = new Image();
@@ -98,11 +100,13 @@ export function Layout() {
         img.src = bgFrameSrc(i);
         img.onload = () => {
           loaded[i] = true;
+          wake();
         };
         images[i] = img;
       };
-      // Load the first screenful now; stream the rest in during idle time so
-      // 145 requests don't all land on the main thread/network at once.
+      // Load the first screenful now; stream the rest in during idle time,
+      // once the page has finished loading, so 145 requests don't compete
+      // with the page itself or all land on the main thread/network at once.
       if (!reduce) for (let i = 1; i <= Math.min(12, BG_TOTAL_FRAMES); i++) loadFrame(i);
       let streamNext = reduce ? BG_TOTAL_FRAMES + 1 : 13;
       const idle: (cb: () => void) => number =
@@ -115,7 +119,8 @@ export function Layout() {
         streamNext = end + 1;
         idle(streamRest);
       };
-      idle(streamRest);
+      if (document.readyState === 'complete') idle(streamRest);
+      else on(cleanups, window, 'load', () => idle(streamRest), { once: true } as AddEventListenerOptions);
 
       const nearestLoadedFrame = (target: number) => {
         const t = Math.round(target);
@@ -185,6 +190,7 @@ export function Layout() {
       const onScroll = () => {
         const progress = Math.min(1, Math.max(0, scrollY / maxScroll));
         targetFrame = 1 + progress * (BG_TOTAL_FRAMES - 1);
+        wake();
       };
       on(cleanups, window, 'scroll', onScroll, { passive: true });
       onScroll();
@@ -226,6 +232,7 @@ export function Layout() {
       let lastDrawn = -1;
 
       const tick = () => {
+        raf = 0;
         if (!running) return;
         currentFrame += (targetFrame - currentFrame) * 0.09;
         if (Math.abs(currentFrame - targetFrame) < 0.05) currentFrame = targetFrame;
@@ -235,16 +242,23 @@ export function Layout() {
           drawFrame(frameToShow);
           lastDrawn = frameToShow;
         }
-        raf = requestAnimationFrame(tick);
+        // Once the frame has caught up with the scroll position nothing can
+        // change until the page scrolls or another frame finishes loading,
+        // and both of those wake the loop again, so stop asking for frames.
+        if (currentFrame !== targetFrame) raf = requestAnimationFrame(tick);
+      };
+      wake = () => {
+        if (!disposed && running && !raf) raf = requestAnimationFrame(tick);
       };
 
       const onVisibility = () => {
         if (document.visibilityState === 'hidden') {
           running = false;
           cancelAnimationFrame(raf);
+          raf = 0;
         } else if (!running) {
           running = true;
-          raf = requestAnimationFrame(tick);
+          wake();
         }
       };
       on(cleanups, document, 'visibilitychange', onVisibility);
@@ -263,6 +277,8 @@ export function Layout() {
         H = 0;
       let P: Array<{
         x: number; y: number; z: number; a: number; rr: number; sp: number; ph: number; w: number; hot: boolean;
+        // fixed per particle, so worked out once in build() rather than every frame
+        size: number; fill: string; trail: string;
       }> = [];
       let lastY = scrollY,
         vel = 0;
@@ -294,7 +310,18 @@ export function Layout() {
             ph: Math.random() * Math.PI * 2,
             w: 0.2 + Math.random() * 0.8,
             hot: Math.random() < 0.09,
+            size: 0,
+            fill: '',
+            trail: '',
           });
+        for (const p of P) {
+          const alpha = (0.14 + p.z * 0.5) * (p.hot ? 1.5 : 1);
+          p.size = 1.4 * p.z * (p.hot ? 1.7 : 1);
+          p.fill = p.hot
+            ? 'rgba(240,224,189,' + alpha.toFixed(3) + ')'
+            : 'rgba(224,203,158,' + alpha.toFixed(3) + ')';
+          p.trail = 'rgba(203,176,120,' + (alpha * 0.8).toFixed(3) + ')';
+        }
       }
 
       /* the travelling logo (when active, home page only) is the primary
@@ -328,7 +355,8 @@ export function Layout() {
 
       const t0 = performance.now();
       function frame(now: number) {
-        if (disposed) return;
+        raf = 0;
+        if (disposed || hidden) return;
         const t = now - t0,
           y = scrollY;
         let d = y - lastY;
@@ -374,19 +402,16 @@ export function Layout() {
             yy += (dy / dd) * f * f * 26;
           }
 
-          const alpha = (0.14 + p.z * 0.5) * (p.hot ? 1.5 : 1);
-          const size = 1.4 * p.z * (p.hot ? 1.7 : 1);
+          const size = p.size;
           if (streak > 1.3) {
             // A thin filled rect reads identically to a capped line at this
             // size but skips path construction + stroking, which is what
             // made fast scrolling (streak active on ~every particle) heavy.
             const len = vel > 0 ? -streak * p.z : streak * p.z;
-            ctx!.fillStyle = 'rgba(203,176,120,' + (alpha * 0.8).toFixed(3) + ')';
+            ctx!.fillStyle = p.trail;
             ctx!.fillRect(x - size / 2, len < 0 ? yy + len : yy, size, Math.abs(len));
           } else {
-            ctx!.fillStyle = p.hot
-              ? 'rgba(240,224,189,' + alpha.toFixed(3) + ')'
-              : 'rgba(224,203,158,' + alpha.toFixed(3) + ')';
+            ctx!.fillStyle = p.fill;
             ctx!.fillRect(x - size / 2, yy - size / 2, size, size);
           }
         }
@@ -413,6 +438,18 @@ export function Layout() {
         }, 160);
       };
       on(cleanups, window, 'resize', onResize, { passive: true });
+
+      // stop drawing while the tab is hidden, and pick up where it left off
+      let hidden = document.visibilityState === 'hidden';
+      on(cleanups, document, 'visibilitychange', () => {
+        hidden = document.visibilityState === 'hidden';
+        if (hidden) {
+          cancelAnimationFrame(raf);
+          raf = 0;
+        } else if (!raf) {
+          raf = requestAnimationFrame(frame);
+        }
+      });
 
       resize();
       build();
@@ -697,14 +734,14 @@ export function Layout() {
             <div className="ring"></div>
             <div className="ring two"></div>
             <div className="sheen"></div>
-            <img id="flierImg" src={LOGO} alt="" />
+            <img id="flierImg" src={LOGO} alt="" width={827} height={834} />
           </div>
         </div>
       </div>
 
       <nav id="nav" aria-label="Main">
         <Link className="brand" to="/" aria-label="Quillstones home">
-          <img className="nav-mono" src={LOGO} alt="Quillstones" />
+          <img className="nav-mono" src={LOGO} alt="Quillstones" width={827} height={834} />
         </Link>
         <div className="nav-links">
           {NAV_ITEMS.map((item) => (
@@ -757,14 +794,19 @@ export function Layout() {
       </nav>
 
       <main id="main" ref={mainRef} tabIndex={-1}>
-        <Outlet />
+        {/* Navigation runs in a React transition, so while a page's code is
+            still loading the current page stays on screen; the fallback only
+            shows on a first render with nothing to keep (e.g. `vite dev`). */}
+        <Suspense fallback={<div style={{ minHeight: '100vh' }} aria-busy="true" />}>
+          <Outlet />
+        </Suspense>
       </main>
 
       <footer>
         <div className="wrap">
           <div className="foot-top">
             <div className="foot-brand">
-              <img className="foot-logo" data-dust-anchor src={LOGO} alt="Quillstones" />
+              <img className="foot-logo" data-dust-anchor src={LOGO} alt="Quillstones" width={827} height={834} />
               <p>
                 Our mission is to help every author publish a book they’re proud of — and put it in
                 readers’ hands around the world.

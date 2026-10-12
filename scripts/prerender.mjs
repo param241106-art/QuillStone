@@ -8,6 +8,10 @@
  *                                              from what-we-do.html
  *   dist/404.html     any other address: /contact/ → /contact, the rest → home
  *   dist/sitemap.xml, dist/robots.txt          absolute URLs from VITE_SITE_URL
+ *
+ * Each page's HTML also preloads the hero fonts and that page's own code
+ * chunk, found in the build manifest (dist/.vite/manifest.json), which is
+ * deleted afterwards so it isn't published.
  */
 import { readFile, rm, writeFile } from 'node:fs/promises';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -17,9 +21,32 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = join(root, 'dist');
 const ssrDir = join(root, 'dist-ssr');
 
-const { render, headHtml, ROUTE_PATHS, SITE_URL, BASE, urlOf } = await import(
+const { render, headHtml, ROUTE_PATHS, SITE_URL, BASE, urlOf, PAGE_SOURCES, preloadAllPages } = await import(
   pathToFileURL(join(ssrDir, 'entry-server.js')).href
 );
+// the lazily loaded pages render in full only once their code is loaded
+await preloadAllPages();
+
+const manifest = JSON.parse(await readFile(join(dist, '.vite', 'manifest.json'), 'utf8'));
+const entry = Object.values(manifest).find((c) => c.isEntry);
+
+/** The chunk for a source file plus the chunks it imports, minus the main entry (already loaded). */
+function chunksFor(src, seen = new Set()) {
+  const chunk = manifest[src];
+  if (!chunk || seen.has(src) || chunk === entry) return [];
+  seen.add(src);
+  return [chunk.file, ...(chunk.imports ?? []).flatMap((i) => chunksFor(i, seen))];
+}
+
+// The fonts the first screen is set in: Playfair Display (hero heading) and
+// Inter (nav, hero text), Latin. Preloading them means the text appears in
+// its own font as early as possible.
+const HERO_FONTS = ['src/assets/fonts/playfair-display-normal-latin.woff2', 'src/assets/fonts/inter-normal-latin.woff2'];
+const fontPreloads = HERO_FONTS.map((src) => {
+  const file = manifest[src]?.file;
+  if (!file) throw new Error(`${src} is not in the build manifest`);
+  return `<link rel="preload" href="${BASE}${file}" as="font" type="font/woff2" crossorigin />`;
+});
 
 const template = await readFile(join(dist, 'index.html'), 'utf8');
 if (!template.includes('<!--app-head-->') || !template.includes('<div id="root"></div>')) {
@@ -31,9 +58,13 @@ const fileFor = (route) => (route === '/' ? 'index.html' : `${route.slice(1)}.ht
 for (const route of ROUTE_PATHS) {
   const body = render(route);
   if (body.length < 500) throw new Error(`prerendering ${route} produced almost no HTML`);
+  const preloads = [
+    ...fontPreloads,
+    ...chunksFor(PAGE_SOURCES[route]).map((f) => `<link rel="modulepreload" crossorigin href="${BASE}${f}" />`),
+  ];
   const html = template
     .replace('<html lang="en">', `<html lang="en" data-head-route="${route}">`)
-    .replace('<!--app-head-->', headHtml(route))
+    .replace('<!--app-head-->', [...preloads, headHtml(route)].join('\n    '))
     .replace('<div id="root"></div>', () => `<div id="root" data-route="${route}">${body}</div>`);
   await writeFile(join(dist, fileFor(route)), html);
   console.log(`prerendered ${route} -> dist/${fileFor(route)} (${Math.round(html.length / 1024)} kB)`);
@@ -88,3 +119,4 @@ await writeFile(join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: $
 console.log(`wrote dist/sitemap.xml and dist/robots.txt for ${SITE_URL}`);
 
 await rm(ssrDir, { recursive: true, force: true });
+await rm(join(dist, '.vite'), { recursive: true, force: true });

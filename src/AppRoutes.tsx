@@ -1,15 +1,14 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from '@/components/Layout';
 import { HomePage } from '@/pages/HomePage';
-import { WhatWeDoPage } from '@/pages/WhatWeDoPage';
-import { OurWorkPage } from '@/pages/OurWorkPage';
-import { HowItWorksPage } from '@/pages/HowItWorksPage';
-import { ContactPage } from '@/pages/ContactPage';
+import { ContactPage, HowItWorksPage, OurWorkPage, WhatWeDoPage } from '@/pages';
 
 /**
  * The route table, shared by the browser (App.tsx, BrowserRouter) and the
  * build-time prerender (entry-server.tsx, StaticRouter). Every path here also
- * needs an entry in PAGES (seo/meta.ts) so it gets its own HTML file.
+ * needs an entry in PAGES (seo/meta.ts) so it gets its own HTML file. The
+ * pages other than Home load on demand (pages/index.ts); Layout wraps them
+ * in <Suspense>.
  */
 export function AppRoutes() {
   return (

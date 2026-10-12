@@ -15,7 +15,7 @@
 import { SITE, hasPhone } from '@/config/site';
 import { FAQS } from '@/data/faqs';
 import { PACKAGES } from '@/lib/packages';
-import { routeOf } from '@/lib/assets';
+import { BASE, LOGO, routeOf } from '@/lib/assets';
 
 export const SITE_URL = (import.meta.env.VITE_SITE_URL ?? '')
   .trim()
@@ -75,7 +75,7 @@ function organization() {
     '@id': ORG_ID,
     name: SITE.name,
     url: urlOf('/'),
-    logo: `${SITE_URL}/logo-mark.png`,
+    logo: `${SITE_URL}/${LOGO.slice(BASE.length)}`,
     email: SITE.email,
     ...(hasPhone && {
       contactPoint: {

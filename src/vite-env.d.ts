@@ -12,3 +12,9 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+/** The background frame URLs, in order (bgFrames() in vite.config.ts). */
+declare module 'virtual:bg-frames' {
+  const frames: string[];
+  export default frames;
+}

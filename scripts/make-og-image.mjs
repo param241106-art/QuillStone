@@ -2,7 +2,7 @@
  * Makes public/og-image.png, the 1200x630 picture shown when a page is shared
  * (Open Graph / Twitter card): the existing logo lockup on the site's dark
  * background with the same soft gold glow the hero uses. Run it again after
- * changing public/logo-mark.png:
+ * changing design/logo-mark.png:
  *
  *   npm run og-image
  */
@@ -10,7 +10,7 @@ import { chromium } from 'playwright';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 
-const logo = await readFile(fileURLToPath(new URL('../public/logo-mark.png', import.meta.url)));
+const logo = await readFile(fileURLToPath(new URL('../design/logo-mark.png', import.meta.url)));
 const out = fileURLToPath(new URL('../public/og-image.png', import.meta.url));
 
 const html = `<!doctype html>

@@ -45,7 +45,7 @@ const INTERLUDE_HTML = `
 <!-- MONOGRAM INTERLUDE -->
 <section class="interlude">
   <div class="wrap reveal">
-    <img class="mono" data-dust-anchor src="${LOGO}" alt="The Quillstones mark: a quill drawn through the letters Q and S">
+    <img class="mono" data-dust-anchor src="${LOGO}" width="827" height="834" alt="The Quillstones mark: a quill drawn through the letters Q and S">
     <blockquote>A quill for the <span>word.</span> A stone for the <span>weight</span> it carries.</blockquote>
     <div class="attrib">The mark, explained</div>
   </div>
