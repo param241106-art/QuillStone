@@ -8,6 +8,12 @@ export const BASENAME = BASE.replace(/\/$/, '') || '/';
 export const LOGO = logoUrl;
 /** The hero logo's width in px, capped at 62% of the window (Layout's CFG.heroWidth). */
 export const HERO_LOGO_WIDTH = 440;
+/**
+ * The hero logo is also capped at this share of the window's height, so on a
+ * laptop screen the heading and buttons still fit above the fold. On most
+ * phones the 62% width cap is reached first, so it changes little there.
+ */
+export const HERO_LOGO_MAX_VH = 0.28;
 /** logo-mark.webp's height ÷ width (the file is 827 x 834). */
 export const LOGO_AR = 834 / 827;
 

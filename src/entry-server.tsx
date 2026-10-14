@@ -11,7 +11,7 @@ import { AppRoutes } from '@/AppRoutes';
 import { BASE, BASENAME } from '@/lib/assets';
 
 export { BASE };
-export { PAGES, ROUTE_PATHS, SITE_URL, headHtml, urlOf } from '@/seo/meta';
+export { PAGES, ROUTE_PATHS, INDEXED_ROUTE_PATHS, SITE_URL, headHtml, urlOf } from '@/seo/meta';
 export { PAGE_SOURCES, preloadAllPages } from '@/pages';
 
 /** The page body for `route` (e.g. '/contact'), to go inside <div id="root">. Call preloadAllPages() first. */

@@ -21,7 +21,7 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const dist = join(root, 'dist');
 const ssrDir = join(root, 'dist-ssr');
 
-const { render, headHtml, ROUTE_PATHS, SITE_URL, BASE, urlOf, PAGE_SOURCES, preloadAllPages } = await import(
+const { render, headHtml, ROUTE_PATHS, INDEXED_ROUTE_PATHS, SITE_URL, BASE, urlOf, PAGE_SOURCES, preloadAllPages } = await import(
   pathToFileURL(join(ssrDir, 'entry-server.js')).href
 );
 // the lazily loaded pages render in full only once their code is loaded
@@ -111,7 +111,7 @@ await writeFile(
   join(dist, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${ROUTE_PATHS.map((r) => `  <url><loc>${urlOf(r)}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
+${INDEXED_ROUTE_PATHS.map((r) => `  <url><loc>${urlOf(r)}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
 </urlset>
 `,
 );

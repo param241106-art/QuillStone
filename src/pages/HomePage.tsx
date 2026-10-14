@@ -1,6 +1,6 @@
 import { useEffect, type MouseEvent } from 'react';
 import { useLocation } from 'react-router-dom';
-import { BASE, HERO_LOGO_WIDTH, LOGO, LOGO_AR } from '@/lib/assets';
+import { BASE, HERO_LOGO_WIDTH, HERO_LOGO_MAX_VH, LOGO, LOGO_AR } from '@/lib/assets';
 import { SITE } from '@/config/site';
 import { useRevealAndCounters } from '@/lib/useRevealAndCounters';
 import { PublishingProcess } from '@/components/PublishingProcess';
@@ -24,10 +24,10 @@ const HERO_HTML = `
 <!-- HERO -->
 <header class="hero">
   <div class="wrap">
-    <div class="logo-space" id="logoSpace" style="height:calc(min(${HERO_LOGO_WIDTH}px, 62vw) * ${LOGO_AR})"></div>
+    <div class="logo-space" id="logoSpace" style="height:calc(min(${HERO_LOGO_WIDTH}px, 62vw, ${HERO_LOGO_MAX_VH * 100}vh) * ${LOGO_AR})"></div>
     <div class="hero-copy" id="heroCopy">
-      <div class="kicker reveal">Self-Publishing for Authors</div>
-      <h1 class="hero-tag reveal">Your story, <span class="c-teal">published.</span><br>Your book, <span class="c-coral">worldwide.</span></h1>
+      <h1 class="kicker reveal">Self-Publishing for Authors</h1>
+      <p class="hero-tag reveal">Your story, <span class="c-teal">published.</span><br>Your book, <span class="c-coral">worldwide.</span></p>
       <p class="hero-sub reveal">From editing and cover design to ISBNs and distribution on Amazon KDP, IngramSpark and Draft2Digital, we take your manuscript to readers around the world.</p>
       <div class="hero-cta reveal">
         <a href="${BASE}?scroll=submit" data-scroll-to="submit" class="pill teal">Submit Manuscript</a>

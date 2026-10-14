@@ -7,7 +7,7 @@ const BODY_HTML = `
 <section class="paths page-head" id="paths">
   <div class="wrap">
     <div class="lead reveal">
-      <div class="eyebrow">What we do</div>
+      <h1 class="eyebrow">Self-publishing services</h1>
       <h2>Two doors into <em>one house.</em></h2>
       <p>Tell us which you are, and we'll point you the right way. The craft behind both is the same.</p>
     </div>

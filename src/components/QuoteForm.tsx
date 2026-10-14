@@ -1,6 +1,7 @@
 import { useId, useRef, useState, type ChangeEvent, type FormEvent, type ReactNode } from 'react';
 import { readHoneypot, sendEnquiry } from '@/lib/sendEnquiry';
 import { FieldShell, Honeypot, SendFailed, SuccessPanel } from '@/components/FormParts';
+import { NOT_SURE, PUBLISHING_SERVICES } from '@/lib/packages';
 
 const ROLES = [
   { value: 'Author', label: 'An author' },
@@ -8,17 +9,7 @@ const ROLES = [
   { value: 'Educator', label: 'An educator' },
 ];
 
-// Services the site already describes (see PublishingProcess and lib/packages.ts).
-const SERVICES = [
-  'Complete publishing package',
-  'Editing & proofreading',
-  'Cover design',
-  'Formatting & typesetting',
-  'ISBN & metadata',
-  'Distribution (Amazon KDP, IngramSpark, Draft2Digital)',
-  'Book marketing & launch',
-  'Not sure yet',
-];
+const SERVICES = ['Complete publishing package', ...PUBLISHING_SERVICES, NOT_SURE];
 
 interface Values {
   name: string;

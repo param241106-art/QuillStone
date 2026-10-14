@@ -54,3 +54,16 @@ export const PACKAGES: PublishingPackage[] = [
 /** Choices for the "package" field on the manuscript submission form. */
 export const NOT_SURE = 'Not sure yet';
 export const PACKAGE_CHOICES = [...PACKAGES.map((p) => p.name), NOT_SURE];
+
+/**
+ * The individual services, as the site already describes them (see
+ * PublishingProcess). Listed on the quote form and in What we do's structured data.
+ */
+export const PUBLISHING_SERVICES = [
+  'Editing & proofreading',
+  'Cover design',
+  'Formatting & typesetting',
+  'ISBN & metadata',
+  'Distribution (Amazon KDP, IngramSpark, Draft2Digital)',
+  'Book marketing & launch',
+];

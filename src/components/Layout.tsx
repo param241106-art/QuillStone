@@ -1,17 +1,18 @@
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { BASE, HERO_LOGO_WIDTH, LOGO, LOGO_AR, BG_TOTAL_FRAMES, bgFrameSrc } from '@/lib/assets';
+import { BASE, HERO_LOGO_WIDTH, HERO_LOGO_MAX_VH, LOGO, LOGO_AR, BG_TOTAL_FRAMES, bgFrameSrc } from '@/lib/assets';
 import { trackPageview } from '@/lib/analytics';
-import { applyHead } from '@/seo/meta';
+import { HAS_PUBLISHED_WORK, applyHead } from '@/seo/meta';
 import { SITE, hasWhatsApp, whatsappHref } from '@/config/site';
 import { ContactLinks } from '@/components/ContactLinks';
 import { QuoteForm } from '@/components/QuoteForm';
 import { CookieNotice } from '@/components/CookieNotice';
 
+// Our work joins the nav once it has something to show (see HAS_PUBLISHED_WORK).
 const NAV_ITEMS = [
   { to: '/', label: 'Home', end: true },
   { to: '/what-we-do', label: 'What we do' },
-  { to: '/our-work', label: 'Our work' },
+  ...(HAS_PUBLISHED_WORK ? [{ to: '/our-work', label: 'Our work' }] : []),
   { to: '/how-it-works', label: 'How it works' },
   { to: '/contact', label: 'Contact' },
 ];
@@ -503,7 +504,7 @@ export function Layout() {
     let raf = 0;
 
     function layout() {
-      base = Math.min(CFG.heroWidth, innerWidth * 0.62);
+      base = Math.min(CFG.heroWidth, innerWidth * 0.62, innerHeight * HERO_LOGO_MAX_VH);
       inner!.style.width = base + 'px';
       inner!.style.height = base * AR + 'px';
       space!.style.height = base * AR + 'px';

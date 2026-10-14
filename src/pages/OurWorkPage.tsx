@@ -19,7 +19,7 @@ export function OurWorkPage() {
         <div className="wrap">
           <div className="head-row reveal">
             <div>
-              <div className="eyebrow">From the shelf</div>
+              <h1 className="eyebrow">From the shelf</h1>
               <h2 className="serif">
                 {BOOKS.length > 0 ? (
                   <>

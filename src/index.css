@@ -71,7 +71,7 @@ main:focus{outline:none}
 
 /* ---------- HERO ---------- */
 .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
-  padding:7rem 0 5rem;position:relative;
+  padding:7rem 0 7rem;position:relative;
   background:radial-gradient(680px 420px at 22% 22%,var(--teal-tint),transparent 60%),
              radial-gradient(720px 460px at 80% 30%,var(--coral-tint),transparent 62%),
              radial-gradient(900px 480px at 50% 96%,rgba(203,176,120,.08),transparent 60%)}

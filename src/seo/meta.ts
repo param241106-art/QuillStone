@@ -14,16 +14,30 @@
  */
 import { SITE, hasPhone } from '@/config/site';
 import { FAQS } from '@/data/faqs';
-import { PACKAGES } from '@/lib/packages';
+import { BOOKS } from '@/data/books';
+import { CLIENTS } from '@/data/clients';
+import { TESTIMONIALS } from '@/data/testimonials';
+import { PACKAGES, PUBLISHING_SERVICES } from '@/lib/packages';
 import { BASE, LOGO, routeOf } from '@/lib/assets';
 
 export const SITE_URL = (import.meta.env.VITE_SITE_URL ?? '')
   .trim()
   .replace(/\/+$/, '') || 'https://quillstones.com';
 
+/**
+ * Whether Our work has anything to show (a book, a testimonial or a client).
+ * Until it does, the page is kept out of search results, the sitemap and the
+ * nav, and all three come back on their own once src/data/ has an entry.
+ */
+export const HAS_PUBLISHED_WORK = BOOKS.length + TESTIMONIALS.length + CLIENTS.length > 0;
+
 export interface PageMeta {
   title: string;
   description: string;
+  /** the page's name in its structured-data breadcrumb */
+  label: string;
+  /** adds <meta name="robots" content="noindex"> and leaves the page out of sitemap.xml */
+  noindex?: boolean;
 }
 
 /** Every route that gets its own HTML file, sitemap entry and head tags. */
@@ -32,29 +46,37 @@ export const PAGES: Record<string, PageMeta> = {
     title: 'Self-Publishing for Authors — Quillstones',
     description:
       'Self-publishing for authors: editing, cover design, formatting, ISBNs and worldwide distribution on Amazon KDP, IngramSpark and Draft2Digital. Free quote.',
+    label: 'Home',
   },
   '/what-we-do': {
     title: 'Self-Publishing Services — What We Do — Quillstones',
     description:
       'Self-publishing services for authors with a manuscript: editing, design and publishing, with honest guidance at every stage. Plus brand and marketing work.',
+    label: 'What we do',
   },
   '/our-work': {
     title: 'Self-Published Books — Our Work — Quillstones',
     description:
       'Self-published books from Quillstones authors appear here, with links to buy them. Have a manuscript? Submit it or get a free, no-obligation quote.',
+    label: 'Our work',
+    noindex: !HAS_PUBLISHED_WORK,
   },
   '/how-it-works': {
     title: 'How Self-Publishing Works — Quillstones',
     description:
       'How self-publishing with Quillstones works: send your manuscript, get an honest read, timeline and quote within a week, then one team takes you to launch.',
+    label: 'How it works',
   },
   '/contact': {
     title: 'Contact Us About Self-Publishing — Quillstones',
     description: `Ask about self-publishing your book. Email ${SITE.email}, call or WhatsApp us, or send a message. A real person reads every one.`,
+    label: 'Contact',
   },
 };
 
 export const ROUTE_PATHS = Object.keys(PAGES);
+/** The routes listed in sitemap.xml: every page not marked noindex. */
+export const INDEXED_ROUTE_PATHS = ROUTE_PATHS.filter((r) => !PAGES[r].noindex);
 
 /** The canonical URL of a route: the site root keeps its slash, other pages have none. */
 export const urlOf = (route: string) => `${SITE_URL}${route === '/' ? '/' : route}`;
@@ -68,6 +90,10 @@ export interface HeadTag {
 }
 
 const ORG_ID = `${SITE_URL}/#organization`;
+const WEBSITE_ID = `${SITE_URL}/#website`;
+
+/** Where Quillstones works with authors: India for now. Add countries as the business grows. */
+const AREA_SERVED = { '@type': 'Country', name: 'India' };
 
 function organization() {
   return {
@@ -76,6 +102,9 @@ function organization() {
     name: SITE.name,
     url: urlOf('/'),
     logo: `${SITE_URL}/${LOGO.slice(BASE.length)}`,
+    description:
+      'Quillstones is a self-publishing services company. It edits, designs, formats and distributes authors’ books on Amazon KDP, IngramSpark and Draft2Digital, and authors keep their copyright.',
+    areaServed: AREA_SERVED,
     email: SITE.email,
     ...(hasPhone && {
       contactPoint: {
@@ -92,7 +121,7 @@ function organization() {
 function website() {
   return {
     '@type': 'WebSite',
-    '@id': `${SITE_URL}/#website`,
+    '@id': WEBSITE_ID,
     name: SITE.name,
     url: urlOf('/'),
     publisher: { '@id': ORG_ID },
@@ -125,10 +154,63 @@ function faqPage() {
   };
 }
 
+/** The page itself, tied to the site and the organization, with its breadcrumb on every page but home. */
+function webPage(route: string) {
+  const url = urlOf(route);
+  const type = route === '/contact' ? 'ContactPage' : route === '/our-work' ? 'CollectionPage' : 'WebPage';
+  return {
+    '@type': type,
+    '@id': `${url}#webpage`,
+    url,
+    name: PAGES[route].title,
+    description: PAGES[route].description,
+    isPartOf: { '@id': WEBSITE_ID },
+    about: { '@id': ORG_ID },
+    ...(route !== '/' && { breadcrumb: { '@id': `${url}#breadcrumb` } }),
+  };
+}
+
+function breadcrumb(route: string) {
+  return {
+    '@type': 'BreadcrumbList',
+    '@id': `${urlOf(route)}#breadcrumb`,
+    itemListElement: ['/', route].map((r, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: PAGES[r].label,
+      item: urlOf(r),
+    })),
+  };
+}
+
+/** What we do: the self-publishing service as a whole, with each individual service it covers. */
+function servicesCatalog() {
+  return {
+    '@type': 'Service',
+    '@id': `${urlOf('/what-we-do')}#self-publishing`,
+    name: 'Self-publishing services',
+    serviceType: 'Self-publishing services',
+    provider: { '@id': ORG_ID },
+    areaServed: AREA_SERVED,
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Self-publishing services',
+      itemListElement: PUBLISHING_SERVICES.map((name) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name },
+      })),
+    },
+  };
+}
+
 function structuredData(route: string) {
+  if (!PAGES[route]) return null;
   // the home page carries the packages and the FAQ, so the detail lives there
-  const graph = route === '/' ? [organization(), website(), ...services(), faqPage()] : [];
-  return graph.length ? { '@context': 'https://schema.org', '@graph': graph } : null;
+  const graph =
+    route === '/'
+      ? [organization(), website(), webPage(route), ...services(), faqPage()]
+      : [webPage(route), breadcrumb(route), ...(route === '/what-we-do' ? [servicesCatalog()] : [])];
+  return { '@context': 'https://schema.org', '@graph': graph };
 }
 
 export function headTags(route: string): HeadTag[] {
@@ -139,6 +221,7 @@ export function headTags(route: string): HeadTag[] {
     { tag: 'title', attrs: {}, text: page.title },
     { tag: 'meta', attrs: { name: 'description', content: page.description } },
     { tag: 'link', attrs: { rel: 'canonical', href: url } },
+    ...(page.noindex ? [{ tag: 'meta' as const, attrs: { name: 'robots', content: 'noindex' } }] : []),
     { tag: 'meta', attrs: { property: 'og:type', content: 'website' } },
     { tag: 'meta', attrs: { property: 'og:site_name', content: SITE.name } },
     { tag: 'meta', attrs: { property: 'og:title', content: page.title } },

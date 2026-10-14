@@ -98,7 +98,7 @@ export function ContactPage() {
       <div className="wrap">
         <div className="contact-grid">
           <div className="reveal">
-            <div className="eyebrow">Get in touch</div>
+            <h1 className="eyebrow">Contact us about self-publishing</h1>
             <h2>
               Start a <em>conversation.</em>
             </h2>

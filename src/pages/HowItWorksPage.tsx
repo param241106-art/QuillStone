@@ -3,7 +3,7 @@ import { useRevealAndCounters } from '@/lib/useRevealAndCounters';
 const BODY_HTML = `
 <section class="process page-head" id="process">
   <div class="wrap">
-    <div class="eyebrow reveal">How it works</div>
+    <h1 class="eyebrow reveal">How self-publishing works</h1>
     <h2 class="reveal">Clear steps, <em>no mystery.</em></h2>
     <div class="steps" role="list">
       <div class="step reveal" role="listitem"><div class="n serif" aria-hidden="true">01</div><h4>Send it over</h4><p>Share your manuscript or your brand brief through the form. We read everything ourselves — no gatekeepers, no auto-replies.</p></div>
