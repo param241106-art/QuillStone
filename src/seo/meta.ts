@@ -72,6 +72,24 @@ export const PAGES: Record<string, PageMeta> = {
     description: `Ask about self-publishing your book. Email ${SITE.email}, call or WhatsApp us, or send a message. A real person reads every one.`,
     label: 'Contact',
   },
+  '/about': {
+    title: 'About Quillstones — Self-Publishing Services in India',
+    description:
+      'Quillstones helps authors in India self-publish: editing, cover design, formatting, ISBNs and distribution. You keep your copyright. Here’s how we work.',
+    label: 'About',
+  },
+  '/privacy': {
+    title: 'Privacy Policy — Quillstones',
+    description:
+      'What personal information Quillstones collects through its website and forms, why, who it’s shared with, and how to access, correct or delete it.',
+    label: 'Privacy policy',
+  },
+  '/terms': {
+    title: 'Terms of Service — Quillstones',
+    description:
+      'Quillstones’ terms for self-publishing services: quotes, payment, two revision rounds per stage, cancellations and refunds, and your rights to your book.',
+    label: 'Terms of service',
+  },
 };
 
 export const ROUTE_PATHS = Object.keys(PAGES);
@@ -154,10 +172,17 @@ function faqPage() {
   };
 }
 
+/** The schema.org type of the pages that are more specific than a plain WebPage. */
+const PAGE_TYPES: Record<string, string> = {
+  '/contact': 'ContactPage',
+  '/our-work': 'CollectionPage',
+  '/about': 'AboutPage',
+};
+
 /** The page itself, tied to the site and the organization, with its breadcrumb on every page but home. */
 function webPage(route: string) {
   const url = urlOf(route);
-  const type = route === '/contact' ? 'ContactPage' : route === '/our-work' ? 'CollectionPage' : 'WebPage';
+  const type = PAGE_TYPES[route] ?? 'WebPage';
   return {
     '@type': type,
     '@id': `${url}#webpage`,

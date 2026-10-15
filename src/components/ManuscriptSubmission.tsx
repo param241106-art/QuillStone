@@ -4,7 +4,7 @@ import { NOT_SURE, PACKAGE_CHOICES } from '@/lib/packages';
 import { readHoneypot, sendEnquiry } from '@/lib/sendEnquiry';
 import { SITE } from '@/config/site';
 import { ContactLinks } from '@/components/ContactLinks';
-import { FieldShell, Honeypot, SendFailed, SuccessPanel } from '@/components/FormParts';
+import { FieldShell, Honeypot, PrivacyNote, SendFailed, SuccessPanel } from '@/components/FormParts';
 
 const GENRES = [
   'Literary fiction',
@@ -355,6 +355,7 @@ export function ManuscriptSubmission() {
                   {note}
                 </p>
                 {status === 'failed' && <SendFailed mailto={mailto} />}
+                <PrivacyNote />
               </form>
             )}
           </div>

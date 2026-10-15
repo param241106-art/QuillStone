@@ -1,6 +1,6 @@
 import { useId, useRef, useState, type ChangeEvent, type FormEvent, type ReactNode } from 'react';
 import { readHoneypot, sendEnquiry } from '@/lib/sendEnquiry';
-import { FieldShell, Honeypot, SendFailed, SuccessPanel } from '@/components/FormParts';
+import { FieldShell, Honeypot, PrivacyNote, SendFailed, SuccessPanel } from '@/components/FormParts';
 import { NOT_SURE, PUBLISHING_SERVICES } from '@/lib/packages';
 
 const ROLES = [
@@ -193,6 +193,7 @@ export function QuoteForm({ placement, title, intro, layout = 'band', headingLev
             {hasErrors ? 'Please check the highlighted fields.' : ''}
           </p>
           {status === 'failed' && <SendFailed mailto={mailto} />}
+          <PrivacyNote />
         </form>
       )}
     </div>

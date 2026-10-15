@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, type ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import { HONEYPOT } from '@/lib/sendEnquiry';
 import { hasWhatsApp, whatsappHref } from '@/config/site';
 
@@ -77,6 +78,15 @@ export function SuccessPanel({
         {actionLabel}
       </button>
     </div>
+  );
+}
+
+/** The line under every form's button, pointing to what happens to the details sent. */
+export function PrivacyNote() {
+  return (
+    <p className="form-privacy">
+      By sending this, you agree to our <Link to="/privacy">privacy policy</Link>.
+    </p>
   );
 }
 

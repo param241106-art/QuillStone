@@ -3,7 +3,7 @@ import { useRevealAndCounters } from '@/lib/useRevealAndCounters';
 import { readHoneypot, sendEnquiry } from '@/lib/sendEnquiry';
 import { SITE } from '@/config/site';
 import { ContactLinks } from '@/components/ContactLinks';
-import { FieldShell, Honeypot, SendFailed, SuccessPanel } from '@/components/FormParts';
+import { FieldShell, Honeypot, PrivacyNote, SendFailed, SuccessPanel } from '@/components/FormParts';
 
 const TOPICS = [
   'Publishing a manuscript',
@@ -163,6 +163,7 @@ export function ContactPage() {
                   {hasErrors ? 'Please check the highlighted fields.' : ''}
                 </p>
                 {status === 'failed' && <SendFailed mailto={mailto} />}
+                <PrivacyNote />
               </form>
             )}
           </div>

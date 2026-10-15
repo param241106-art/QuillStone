@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from '@/components/Layout';
 import { HomePage } from '@/pages/HomePage';
-import { ContactPage, HowItWorksPage, OurWorkPage, WhatWeDoPage } from '@/pages';
+import { AboutPage, ContactPage, HowItWorksPage, OurWorkPage, PrivacyPage, TermsPage, WhatWeDoPage } from '@/pages';
 
 /**
  * The route table, shared by the browser (App.tsx, BrowserRouter) and the
@@ -19,6 +19,9 @@ export function AppRoutes() {
         <Route path="our-work" element={<OurWorkPage />} />
         <Route path="how-it-works" element={<HowItWorksPage />} />
         <Route path="contact" element={<ContactPage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="privacy" element={<PrivacyPage />} />
+        <Route path="terms" element={<TermsPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

@@ -10,6 +10,9 @@ export const WhatWeDoPage = lazyPage(() => import('@/pages/WhatWeDoPage').then((
 export const OurWorkPage = lazyPage(() => import('@/pages/OurWorkPage').then((m) => m.OurWorkPage));
 export const HowItWorksPage = lazyPage(() => import('@/pages/HowItWorksPage').then((m) => m.HowItWorksPage));
 export const ContactPage = lazyPage(() => import('@/pages/ContactPage').then((m) => m.ContactPage));
+export const AboutPage = lazyPage(() => import('@/pages/AboutPage').then((m) => m.AboutPage));
+export const PrivacyPage = lazyPage(() => import('@/pages/PrivacyPage').then((m) => m.PrivacyPage));
+export const TermsPage = lazyPage(() => import('@/pages/TermsPage').then((m) => m.TermsPage));
 
 /** Route -> lazily loaded page. */
 export const LAZY_PAGES: Record<string, LazyPage> = {
@@ -17,6 +20,9 @@ export const LAZY_PAGES: Record<string, LazyPage> = {
   '/our-work': OurWorkPage,
   '/how-it-works': HowItWorksPage,
   '/contact': ContactPage,
+  '/about': AboutPage,
+  '/privacy': PrivacyPage,
+  '/terms': TermsPage,
 };
 
 /** Route -> the page's source file, as named in the build manifest. */
@@ -25,6 +31,9 @@ export const PAGE_SOURCES: Record<string, string> = {
   '/our-work': 'src/pages/OurWorkPage.tsx',
   '/how-it-works': 'src/pages/HowItWorksPage.tsx',
   '/contact': 'src/pages/ContactPage.tsx',
+  '/about': 'src/pages/AboutPage.tsx',
+  '/privacy': 'src/pages/PrivacyPage.tsx',
+  '/terms': 'src/pages/TermsPage.tsx',
 };
 
 /** Loads every lazy page's code (the prerender needs them all). */

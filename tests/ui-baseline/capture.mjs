@@ -30,6 +30,9 @@ export const ROUTES = [
   { name: 'our-work', path: '/our-work' },
   { name: 'how-it-works', path: '/how-it-works' },
   { name: 'contact', path: '/contact' },
+  { name: 'about', path: '/about' },
+  { name: 'privacy', path: '/privacy' },
+  { name: 'terms', path: '/terms' },
 ];
 const WIDTHS = [
   { name: 'desktop', width: 1440, height: 900 },

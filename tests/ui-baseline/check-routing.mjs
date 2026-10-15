@@ -13,7 +13,7 @@
 import { chromium } from 'playwright';
 
 const base = (process.argv[2] || 'http://localhost:4302').replace(/\/$/, '');
-const ROUTES = ['/', '/what-we-do', '/our-work', '/how-it-works', '/contact'];
+const ROUTES = ['/', '/what-we-do', '/our-work', '/how-it-works', '/contact', '/about', '/privacy', '/terms'];
 const results = [];
 const check = (name, ok, detail = '') => {
   results.push(ok);
@@ -109,8 +109,10 @@ for (const [from, to] of [
 // raw-HTML links navigate in-app, and update the head tags
 await page.goto(base + '/what-we-do', { waitUntil: 'networkidle' });
 await page.evaluate(() => (window.__sameDocument = true));
-await page.click('a.go >> nth=0');
+await page.click('a.go >> nth=1'); // "Request a proposal" -> /contact
 await page.waitForURL('**/contact');
+// the URL changes a moment before Layout swaps the head tags for the new route
+await page.waitForFunction(() => document.title.startsWith('Contact'), null, { timeout: 5000 }).catch(() => {});
 check(
   'raw-HTML link navigates without a page load',
   await page.evaluate(() => window.__sameDocument === true),

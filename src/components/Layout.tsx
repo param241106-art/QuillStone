@@ -14,6 +14,7 @@ const NAV_ITEMS = [
   { to: '/what-we-do', label: 'What we do' },
   ...(HAS_PUBLISHED_WORK ? [{ to: '/our-work', label: 'Our work' }] : []),
   { to: '/how-it-works', label: 'How it works' },
+  { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];
 
@@ -858,6 +859,10 @@ export function Layout() {
           </div>
           <div className="foot-bottom">
             <p>© 2026 Quillstones. All rights reserved.</p>
+            <nav className="foot-legal" aria-label="Legal">
+              <Link to="/privacy">Privacy policy</Link>
+              <Link to="/terms">Terms of service</Link>
+            </nav>
             <p className="set">Set in Playfair Display &amp; Inter.</p>
           </div>
         </div>
